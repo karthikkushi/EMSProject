@@ -1,0 +1,66 @@
+﻿@model List<EMSProject.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+<h1>THIS IS EMPLOYEE INDEX PAGE</h1>
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0"><i class="fas fa-users me-2"></i>Employee List</h3>
+            <a asp-action="Create" class="btn btn-light text-primary fw-semibold">
+                <i class="fas fa-plus-circle me-1"></i> Add New Employee
+            </a>
+        </div>
+
+        <div class="card-body bg-light rounded-bottom">
+            <p>Total Records Loaded: <strong>@Model?.Count</strong></p>
+
+            <table class="table table-hover table-bordered table-striped rounded-3 overflow-hidden">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        foreach (var emp in Model)
+                        {
+                            <tr class="align-middle text-center">
+                                <td>@emp.Name</td>
+                                <td>@emp.Email</td>
+                                <td>@emp.Phone</td>
+                                <td>@emp.Department</td>
+                                <td>₹@emp.Salary</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-sm btn-outline-warning me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@emp.Id" class="btn btn-sm btn-outline-info me-1">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No Employees Found</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
