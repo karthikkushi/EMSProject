@@ -22,8 +22,8 @@ An ASP.NET Core MVC web application built using ADO.NET for performing CRUD oper
 - Session Handling
 
 ## Admin Login
-Username: karthikein
-Password: kushikarthik
+Username: KARTHIKEIN
+Password: KUSHIKARTHIK
 
 ## Project Structure
 
